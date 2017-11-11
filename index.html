@@ -1,12 +1,40 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+
+			body	{
+				background-color: #4DB6AC;
+				margin: 0;
+				padding: 0;
+				font-family: 'PT Mono', monospace;
+			}
+
+			.app-view {
+				max-width: 500px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 20vh;
+			}
+		</style>
+
+		<link rel="stylesheet" href="./components/ref-list/ref-list.css">
+		<script src="./components/ref-list/ref-list.js"></script>
+
+		<link rel="stylesheet" href="./components/collection/collection.css">
+		<script src="./components/collection/collection.js"></script>
 	</head>
 	<body>
-		<div class="playground">
-			<div id="app" class="app-view">
-				
-			</div>
+		<div id="app" class="app-view">
+			<div id="ref-list" class="ref-list"></div>
 		</div>
+
+		<script src="./app/app.js"></script>
 	</body>
 </html>
