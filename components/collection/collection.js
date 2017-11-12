@@ -21,12 +21,6 @@
 		}
 	}
 
-	/**
-	 * List of configs placed 
-	 * on right hand of the item
-	 *
-	 * @return documenElement
-	 */
 	Collection.prototype.render = function () {
 		const collectionEl = document.createElement('div');
 		collectionEl.classList.add('collection');
@@ -42,22 +36,34 @@
 		itemsEl.classList.add('collection--list');
 
 		this.items.forEach(item => {
-			const configs     = this.renderItemConfigPanel();
-
-			const itemEl = document.createElement('li');
-			itemEl.classList.add('collection--item');
-
-			const itemName   = item.title || 'Unknown';
-			const itemNameEl = document.createElement('div');
-			itemEl.classList.add('collection--item__name');
-			itemEl.innerText = itemName;
-			itemEl.appendChild(configs);
-			itemsEl.appendChild(itemEl);
+			itemsEl.appendChild(this.renderItem(item));	
 		});
 		collectionEl.appendChild(itemsEl);
 
 		// Render collection
 		return collectionEl;
+	}
+
+	/**
+	 * Render item based on input data
+	 *
+	 * @todo  handle item.url
+	 * @param  object item 
+	 * @return object
+	 */
+	Collection.prototype.renderItem =function (item) {
+		const configs     = this.renderItemConfigPanel();
+
+		const itemEl = document.createElement('li');
+		itemEl.classList.add('collection--item');
+
+		const itemName   = item.title || 'Unknown';
+		const itemNameEl = document.createElement('div');
+		itemEl.classList.add('collection--item__name');
+		itemEl.innerText = itemName;
+		itemEl.appendChild(configs);
+
+		return itemEl;
 	}
 
 	/**
