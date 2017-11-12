@@ -19,8 +19,8 @@
 	];
 
 	const refList = new RefList({
+		el: document.querySelector('.ref-list'),
 		collection: {
-			el: document.querySelector('.ref-list'),
 			items: items,
 			title: title
 		}

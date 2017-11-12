@@ -3,7 +3,6 @@
 
 	class Collection {
 		constructor(options) {
-			this.el    = options.el || 'body';
 			this.items = options.items || [
 				{
 					title: 'Google',
@@ -19,8 +18,6 @@
 				},
 			];
 			this.title = options.title || 'Reference list';
-
-			this.render();
 		}
 	}
 
@@ -31,8 +28,6 @@
 	 * @return documenElement
 	 */
 	Collection.prototype.render = function () {
-		this.el.innerHTML = '';
-
 		const collectionEl = document.createElement('div');
 		collectionEl.classList.add('collection');
 
@@ -45,8 +40,6 @@
 		// Render items into collection
 		const itemsEl     = document.createElement('ul');
 		itemsEl.classList.add('collection--list');
-
-		console.dir(this.items);
 
 		this.items.forEach(item => {
 			const configs     = this.renderItemConfigPanel();
@@ -64,7 +57,7 @@
 		collectionEl.appendChild(itemsEl);
 
 		// Render collection
-		this.el.appendChild(collectionEl);
+		return collectionEl;
 	}
 
 	/**
