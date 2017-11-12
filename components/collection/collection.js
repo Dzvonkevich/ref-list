@@ -12,6 +12,11 @@
 		collectionEl.addEventListener('click', this._onClick.bind(this));
 	}
 
+	/**
+	 * Init onClick
+	 * Here we handle action 
+	 * and call action functon
+	 */
 	Collection.prototype._onClick = function (event) {
 		event.preventDefault();
 		let target = event.target;
@@ -22,6 +27,26 @@
 		}
 
 		const action = target.getAttribute('data-action');
+
+		if (typeof this[action] === 'function')
+			this[action].call(this, target, event);
+	}
+
+	/**
+	 * Delete item
+	 */
+	Collection.prototype.deleteItem = function (target, event) {
+		target.closest('.collection--item').remove();
+
+		// @todo - call a function to show 'Empty list'
+		// if we detelet the last one element
+	}
+
+	/**
+	 * Reorder item
+	 */
+	Collection.prototype.reorderItem = function (event) {
+		console.dir(event);
 	}
 
 	Collection.prototype.render = function () {
@@ -82,11 +107,11 @@
 		const configs = [
 			{
 				faIcon: 'fa-bars',
-				action: 'reorder',
+				action: 'reorderItem',
 			},
 			{
 				faIcon: 'fa-trash-o',
-				action: 'delete',
+				action: 'deleteItem',
 			}
 		];
 
