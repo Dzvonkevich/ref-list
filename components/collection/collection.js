@@ -3,22 +3,25 @@
 
 	class Collection {
 		constructor(options) {
-			this.items = options.items || [
-				{
-					title: 'Google',
-					url: 'https://google.com'
-				},
-				{
-					title: 'Facebook',
-					url: 'https://facebook.com'
-				},
-				{
-					title: 'LinkedIn',
-					url: 'https://linkedin.com'
-				},
-			];
+			this.items = options.items || {};
 			this.title = options.title || 'Reference list';
 		}
+	}
+
+	Collection.prototype._initEvents = function (collectionEl) {
+		collectionEl.addEventListener('click', this._onClick.bind(this));
+	}
+
+	Collection.prototype._onClick = function (event) {
+		event.preventDefault();
+		let target = event.target;
+
+		// Resign target to the link
+		while (!target.getAttribute('data-action') && !target.classList.contains('collection')) {
+			target = target.parentElement;
+		}
+
+		const action = target.getAttribute('data-action');
 	}
 
 	Collection.prototype.render = function () {
@@ -39,6 +42,9 @@
 			itemsEl.appendChild(this.renderItem(item));	
 		});
 		collectionEl.appendChild(itemsEl);
+
+		// init events
+		this._initEvents(collectionEl);
 
 		// Render collection
 		return collectionEl;
