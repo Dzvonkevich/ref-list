@@ -45,11 +45,11 @@
 	color: #999;
 }
 
-.collection--config__delete:hover {
+.collection--config__deleteItem:hover {
 	color: #D81B60;
 }
 
-.collection--config__reorder:hover {
+.collection--config__reorderItem:hover {
 	color: #555;
 }
 
