@@ -5,14 +5,18 @@
 		constructor(options) {
 			this.el         = options.el || 'body';
 			this.collection = options.collection || {};
+			this.form       = options.form || {};
 
 			this.render();
 		}
-	}
 
-	RefList.prototype.render = function () {
-		const collection = new Collection(this.collection);
-		this.el.appendChild(collection.render());
+		render() {
+			const collection = new Collection(this.collection);
+			this.el.appendChild(collection.render());
+
+			const form = new Form(this.form);
+			this.el.appendChild(form.render());
+		}
 	}
 
 	window.RefList = RefList;

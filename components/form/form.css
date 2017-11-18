@@ -1,0 +1,19 @@
+.form {
+	margin-bottom: 0;
+}
+
+.form--fields {
+	display: flex;
+}
+
+.form--fields > * + * {
+	margin-left: 5px;
+}
+
+.form--field__input {
+	flex-grow: 1;
+}
+
+.form--field__input.js-error {
+	border-color: red;
+}

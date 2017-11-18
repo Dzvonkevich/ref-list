@@ -23,6 +23,6 @@
 		collection: {
 			items: items,
 			title: title
-		}
+		},
 	});
 })();
